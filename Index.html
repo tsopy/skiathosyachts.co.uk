@@ -11,17 +11,17 @@
     <meta name="robots" content="index, follow">
     
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://skiathosyachts.co.uk/">
+    <meta property="og:url" content="https://yachting-themis-iv.gr/">
     <meta property="og:title" content="THEMIS IV | Executive Yacht Charter">
     <meta property="og:description" content="Exclusive VIP cruises for C-Level executives.">
-    <meta property="og:image" content="images/DSC09872.jpg">
+    <meta property="og:image" content="images/phoca_thumb_l_dsc09872-2.jpg">
     <meta property="og:locale" content="en_GB">
     
-    <link rel="canonical" href="https://skiathosyachts.co.uk/">
-    <link rel="alternate" hreflang="en" href="https://skiathosyachts.co.uk/">
-    <link rel="alternate" hreflang="el" href="https://skiathosyachts.co.uk/?lang=el">
-    <link rel="alternate" hreflang="fr" href="https://skiathosyachts.co.uk/?lang=fr">
-    <link rel="alternate" hreflang="de" href="https://skiathosyachts.co.uk/?lang=de">
+    <link rel="canonical" href="https://yachting-themis-iv.gr/">
+    <link rel="alternate" hreflang="en" href="https://yachting-themis-iv.gr/">
+    <link rel="alternate" hreflang="el" href="https://yachting-themis-iv.gr/?lang=el">
+    <link rel="alternate" hreflang="fr" href="https://yachting-themis-iv.gr/?lang=fr">
+    <link rel="alternate" hreflang="de" href="https://yachting-themis-iv.gr/?lang=de">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
@@ -32,6 +32,7 @@
             --whatsapp: #25D366;
             --text-light: #f4f4f4;
             --bg-dark: #121a2f;
+            --card-bg: rgba(255,255,255,0.03);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { 
@@ -133,104 +134,330 @@
             color: var(--primary);
         }
         
+        /* HERO SECTION WITH VIDEO BACKGROUND */
         header {
+            position: relative;
             height: 100vh;
             min-height: 600px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            background: url("images/DSC09872.jpg") center/cover no-repeat;
-            background-attachment: scroll;
         }
-        header::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(10, 17, 40, 0.2) 0%, rgba(10, 17, 40, 0.85) 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; padding: 0 20px; }
-        .hero-title { font-size: 2.5rem; font-weight: 700; letter-spacing: 4px; margin-bottom: 0.8rem; text-transform: uppercase; text-shadow: 2px 4px 15px rgba(0,0,0,0.6); animation: fadeInDown 1.5s ease-out; }
-        .hero-subtitle { font-size: 0.9rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 1.5rem; color: var(--accent); animation: fadeInUp 1.5s ease-out 0.5s both; }
-        .hero-btn { display: inline-block; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); color: #fff; border: 1px solid var(--accent); padding: 0.8rem 1.8rem; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; border-radius: 40px; transition: all 0.4s ease; }
-        .hero-btn:hover { color: var(--primary); border-color: var(--accent); background: var(--accent); }
-        .scroll-down { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 2; color: var(--accent); font-size: 1.3rem; animation: bounce 2s infinite; }
+        #heroVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 17, 40, 0.3) 0%, rgba(10, 17, 40, 0.85) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            text-shadow: 2px 4px 15px rgba(0,0,0,0.6);
+            animation: fadeInDown 1.5s ease-out;
+        }
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+        .hero-btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            color: #fff;
+            border: 1px solid var(--accent);
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 40px;
+            transition: all 0.4s ease;
+        }
+        .hero-btn:hover {
+            color: var(--primary);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            background: var(--accent);
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: var(--accent);
+            font-size: 1.3rem;
+            animation: bounce 2s infinite;
+        }
 
-        .features { padding: 4rem 5%; background: var(--bg-dark); }
+        /* ABOUT SECTION WITH slideshow1.jpg BACKGROUND */
+        .about-section {
+            padding: 6rem 5%;
+            position: relative;
+            background: url("images/slideshow1.jpg") center/cover no-repeat fixed;
+            color: var(--text-light);
+        }
+        .about-section .about-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 17, 40, 0.75);
+            z-index: 0;
+        }
+        .about-section .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
         .section-header { text-align: center; margin-bottom: 2.5rem; opacity: 0; transform: translateY(30px); transition: all 1s ease; }
         .section-header.visible { opacity: 1; transform: translateY(0); }
-        .section-title { font-size: 2rem; color: var(--accent); margin-bottom: 0.8rem; }
-        .section-subtitle { font-size: 0.9rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; padding: 0 1rem; }
+        .section-title { font-size: 2rem; color: var(--accent); margin-bottom: 0.8rem; letter-spacing: 2px; }
+        .section-subtitle { font-size: 0.9rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; padding: 0 1rem; }
         
         .feature-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
-        .feature-text { padding: 1rem; opacity: 0; transform: translateX(-30px); transition: all 1s ease 0.3s; }
+        .feature-text { padding: 1.5rem; background: rgba(10, 17, 40, 0.6); backdrop-filter: blur(5px); border-radius: 16px; border: 1px solid rgba(212, 175, 55, 0.2); opacity: 0; transform: translateX(-30px); transition: all 1s ease 0.3s; }
         .feature-text.visible { opacity: 1; transform: translateX(0); }
-        .feature-text h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .feature-text h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); }
         .feature-list { list-style: none; margin-top: 1rem; }
         .feature-list li { margin-bottom: 0.8rem; font-size: 0.9rem; display: flex; align-items: center; flex-wrap: wrap; }
         .feature-list li::before { content: '♦'; color: var(--accent); margin-right: 10px; font-size: 0.9rem; }
         .feature-img { border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); opacity: 0; transform: translateX(30px); transition: all 1s ease 0.6s; }
         .feature-img.visible { opacity: 1; transform: translateX(0); }
-        .feature-img img { width: 100%; height: auto; display: block; }
+        .feature-img img { width: 100%; height: auto; display: block; border-radius: 8px; margin-bottom: 1rem; }
 
-        .gallery-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 0.7rem 1.5rem;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            text-transform: uppercase;
-            font-weight: 700;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            margin-top: 1rem;
-            transition: all 0.3s;
+        /* EXPERIENCES SECTION WITH slideshow1.jpg BACKGROUND */
+        .experiences-section {
+            padding: 6rem 5%;
+            position: relative;
+            background: url("images/slideshow1.jpg") center/cover no-repeat fixed;
+            color: var(--text-light);
         }
-        .gallery-link:hover {
-            background: var(--accent);
-            color: var(--primary);
+        .experiences-section .experiences-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 17, 40, 0.8);
+            z-index: 0;
         }
-
-        .banner { 
-            height: 75vh; 
-            min-height: 300px;
-            background: url("images/slideshow1.jpg") center/cover no-repeat; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative; 
-            text-align: center; 
+        .experiences-section .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        .banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 17, 40, 0.6); }
-        .banner-content { position: relative; z-index: 1; opacity: 0; transform: scale(0.9); transition: all 1s ease; padding: 0 1rem; }
-        .banner-content.visible { opacity: 1; transform: scale(1); }
-        .banner-content h2 { font-size: 1.8rem; color: #fff; margin-bottom: 0.8rem; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        .banner-content p { font-size: 1rem; color: var(--accent); font-style: italic; }
-
         .experience-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
         .exp-card {
-            background: linear-gradient(rgba(10,17,40,0.85), rgba(10,17,40,0.85));
-            background-size: cover;
-            background-position: center;
+            background: rgba(10, 17, 40, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             padding: 1.5rem;
-            border-radius: 12px;
+            border-radius: 16px;
             transition: transform 0.3s;
         }
+        .exp-card:hover { transform: translateY(-5px); border-color: var(--accent); }
         .exp-card h3 { font-size: 1.2rem; color: var(--accent); margin-bottom: 0.8rem; }
         .exp-card p { font-size: 0.85rem; line-height: 1.4; }
         .exp-card ul { margin-top: 0.8rem; }
         .exp-card ul li { font-size: 0.8rem; margin-bottom: 0.5rem; }
 
-        /* BOOKING FORM - FIXED FOR MOBILE */
+        /* EXECUTIVE SPECS SECTION - PREMIUM STYLING WITH BANNER BACKGROUND */
+        .executive-specs-section {
+            position: relative;
+            background: url("images/slideshow1.jpg") center/cover no-repeat fixed;
+            padding: 6rem 5%;
+            color: var(--text-light);
+            z-index: 1;
+        }
+        .executive-specs-section .specs-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 17, 40, 0.85);
+            backdrop-filter: blur(2px);
+            z-index: -1;
+        }
+        .executive-specs-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .executive-specs-section .section-title {
+            color: var(--accent);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .executive-specs-section .section-subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        .spec-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .spec-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            background: rgba(212, 175, 55, 0.1);
+        }
+        .spec-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .spec-content strong {
+            display: block;
+            color: var(--accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+        .spec-content span {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .spec-content small {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+        .features-duo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .feature-card {
+            background: rgba(10, 17, 40, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 20px;
+            padding: 1.8rem;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .feature-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+        }
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-card li {
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+        }
+        .feature-card li strong {
+            color: var(--accent);
+            min-width: 110px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        .feature-card li span {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .gallery-button-wrapper {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .banner-gallery-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(212, 175, 55, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .banner-gallery-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
         .booking-container { padding: 3rem 4%; background: var(--bg-dark); display: flex; justify-content: center; }
         .booking-box { background: rgba(255,255,255,0.03); border: 1px solid var(--accent); padding: 1.5rem; border-radius: 12px; width: 100%; max-width: 800px; }
         .booking-form { display: grid; grid-template-columns: 1fr; gap: 1rem; }
         .form-group { display: flex; flex-direction: column; }
         .form-group label { color: var(--accent); margin-bottom: 5px; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
         
-        /* CRITICAL FIX: Make select dropdowns fully visible on mobile */
         .form-group select {
             background: rgba(255,255,255,0.1); 
             border: 1px solid rgba(212, 175, 55, 0.3); 
@@ -244,19 +471,14 @@
             -webkit-appearance: menulist;
             appearance: menulist;
             cursor: pointer;
+            min-height: 45px;
         }
         
-        /* Make option text visible and readable */
         .form-group select option {
             background: #1a2a4a;
             color: white;
             padding: 10px;
             font-size: 14px;
-        }
-        
-        .form-group select optgroup {
-            background: #1a2a4a;
-            color: white;
         }
         
         .form-group input, .form-group textarea { 
@@ -308,7 +530,10 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
             font-size: 1.6rem; 
             color: white;
+            transition: transform 0.2s;
         }
+        .whatsapp-float:hover { transform: scale(1.05); }
+        
         .ai-concierge-btn { 
             position: fixed; 
             bottom: 20px; 
@@ -324,7 +549,10 @@
             z-index: 2000; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
             font-size: 1.3rem;
+            transition: transform 0.2s;
         }
+        .ai-concierge-btn:hover { transform: scale(1.05); }
+        
         .ai-chat-window { 
             position: fixed; 
             bottom: 80px; 
@@ -347,15 +575,51 @@
 
         footer { background: var(--primary); padding: 2rem 5% 1rem; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.3); }
         .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent); margin-bottom: 1rem; }
-        .contact-info { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .contact-info { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .contact-item { display: flex; flex-direction: column; align-items: center; }
         .contact-item span:first-child { color: var(--accent); margin-bottom: 3px; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; }
         .contact-item span:last-child { font-size: 0.75rem; }
+        .whatsapp-label { color: #25D366; }
         .copyright { color: rgba(255,255,255,0.4); font-size: 0.65rem; margin-top: 1rem; }
 
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-12px) translateX(-50%); } 60% { transform: translateY(-5px) translateX(-50%); } }
+
+        /* Mobile optimization for video */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; letter-spacing: 3px; }
+            .hero-subtitle { font-size: 0.7rem; letter-spacing: 2px; }
+            .hero-btn { padding: 0.6rem 1.5rem; font-size: 0.8rem; }
+            .feature-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .booking-form { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .experience-grid { grid-template-columns: 1fr; }
+            .nav-right { flex-direction: row; width: auto; justify-content: flex-end; margin-top: 0; }
+            .nav-links { margin: 0; }
+            nav { flex-wrap: nowrap; }
+            .ai-chat-window { left: auto; right: 20px; width: 300px; }
+            .features-duo-grid { grid-template-columns: 1fr; }
+            .specs-grid { gap: 1rem; }
+            .spec-card { padding: 1rem; }
+            .feature-card h3 { font-size: 1.3rem; }
+            .executive-specs-section { padding: 4rem 5%; background-attachment: scroll; }
+            .about-section { background-attachment: scroll; }
+            .experiences-section { background-attachment: scroll; }
+            .banner-gallery-btn { padding: 0.6rem 1.2rem; font-size: 0.7rem; }
+            .feature-text { padding: 1rem; }
+            
+            /* Σε κινητά, το video αντικαθίσταται με εικόνα για ταχύτητα */
+            #heroVideo {
+                display: none;
+            }
+            header {
+                background: url("images/phoca_thumb_l_dsc09872-2.jpg") center/cover no-repeat;
+            }
+            .video-overlay {
+                background: rgba(10, 17, 40, 0.7);
+            }
+        }
 
         @media (min-width: 768px) {
             .hero-title { font-size: 3.5rem; }
@@ -368,6 +632,7 @@
             .nav-links { margin: 0; }
             nav { flex-wrap: nowrap; }
             .ai-chat-window { left: auto; right: 20px; width: 300px; }
+            .features-duo-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (min-width: 1024px) {
@@ -383,7 +648,8 @@
         <ul class="nav-links">
             <li><a href="#home" data-key="nav_home">Home</a></li>
             <li><a href="#about" data-key="nav_yacht">The Yacht</a></li>
-            <li><a href="#gallery" data-key="nav_experience">Experience</a></li>
+            <li><a href="#specs" data-key="nav_specs">Specifications</a></li>
+            <li><a href="#experience" data-key="nav_experience">Experience</a></li>
             <li><a href="#contact" data-key="nav_contact">Contact</a></li>
         </ul>
         <div class="nav-right">
@@ -397,7 +663,13 @@
         </div>
     </nav>
 
+    <!-- HERO SECTION WITH VIDEO BACKGROUND -->
     <header id="home">
+        <video autoplay muted loop playsinline id="heroVideo">
+            <source src="images/hero-video.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="video-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">THEMIS IV</h1>
             <p class="hero-subtitle" data-key="hero_subtitle">CRUISER YACHTS 450C SPORT COUPE</p>
@@ -406,74 +678,144 @@
         <div class="scroll-down">↓</div>
     </header>
 
-    <section class="features" id="about">
-        <div class="section-header fade-element">
-            <h2 class="section-title" data-key="about_title">Absolute Comfort & C-Suite Style</h2>
-            <p class="section-subtitle" data-key="about_subtitle">Designed for the global elite. A private sanctuary on the Aegean.</p>
+    <!-- ABOUT SECTION WITH slideshow1.jpg BACKGROUND -->
+    <section class="about-section" id="about">
+        <div class="about-overlay"></div>
+        <div class="container">
+            <div class="section-header fade-element">
+                <h2 class="section-title" data-key="about_title">Absolute Comfort & C-Suite Style</h2>
+                <p class="section-subtitle" data-key="about_subtitle">Designed for the global elite. A private sanctuary on the Aegean.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-text fade-element">
+                    <h3 data-key="feature1_title">Elegance Meets<br>Performance</h3>
+                    <p data-key="feature1_text1">THEMIS IV is a stunning Cruiser Yachts 450C Sport Coupe, engineered for the CEO who demands perfection.</p>
+                    <p data-key="feature1_text2">Every detail is curated: premium leather, carbon accents, and panoramic views.</p>
+                    <ul class="feature-list">
+                        <li data-key="feature1_list1">Spacious salon with 360° panoramic views</li>
+                        <li data-key="feature1_list2">Fully equipped high-end galley</li>
+                        <li data-key="feature1_list3">Premium leather upholstery and authentic wood finishes</li>
+                        <li data-key="feature1_list4">State-of-the-art sound system & home cinema</li>
+                    </ul>
+                </div>
+                <div class="feature-img fade-element">
+                    <img src="images/DSC00020-999.jpg" alt="Interior" loading="lazy">
+                    <img src="images/media__Themisiv.jpg" alt="Deck" loading="lazy">
+                </div>
+            </div>
         </div>
-        <div class="feature-grid">
-            <div class="feature-text fade-element">
-                <h3 data-key="feature1_title">Elegance Meets<br>Performance</h3>
-                <p data-key="feature1_text1">THEMIS IV is a stunning Cruiser Yachts 450C Sport Coupe, engineered for the CEO who demands perfection.</p>
-                <p data-key="feature1_text2">Every detail is curated: premium leather, carbon accents, and panoramic views.</p>
-                <ul class="feature-list">
-                    <li data-key="feature1_list1">Spacious salon with 360° panoramic views</li>
-                    <li data-key="feature1_list2">Fully equipped high-end galley</li>
-                    <li data-key="feature1_list3">Premium leather upholstery and authentic wood finishes</li>
-                    <li data-key="feature1_list4">State-of-the-art sound system & home cinema</li>
-                </ul>
+    </section>
+
+    <!-- EXECUTIVE SPECS SECTION -->
+    <section class="executive-specs-section" id="specs">
+        <div class="specs-overlay"></div>
+        <div class="container">
+            <div class="section-header fade-element">
+                <h2 class="section-title" data-key="specs_title">Engineering Excellence</h2>
+                <p class="section-subtitle" data-key="specs_subtitle">Precision, Power & Performance</p>
             </div>
-            <div class="feature-img fade-element">
-                <img src="images/DSC00020-999.jpg" alt="Interior" loading="lazy">
-                <img src="images/media__Themisiv.jpg" alt="Deck" loading="lazy">
+            <div class="specs-grid fade-element">
+                <div class="spec-card">
+                    <div class="spec-icon">⚓</div>
+                    <div class="spec-content">
+                        <strong data-key="spec_length">Length Overall</strong>
+                        <span>13.90 m <small>(45.6 ft)</small></span>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">📐</div>
+                    <div class="spec-content">
+                        <strong data-key="spec_beam">Beam</strong>
+                        <span>4.75 m <small>(15.6 ft)</small></span>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">🔧</div>
+                    <div class="spec-content">
+                        <strong data-key="spec_engines">Engines</strong>
+                        <span>2x IPS 600 Volvo Penta</span>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">🏁</div>
+                    <div class="spec-content">
+                        <strong data-key="spec_speed">Max Speed</strong>
+                        <span>43 mph <small>(69 km/h)</small></span>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">⛽</div>
+                    <div class="spec-content">
+                        <strong data-key="spec_consumption">Fuel Consumption</strong>
+                        <span>120 L/hour</span>
+                    </div>
+                </div>
             </div>
-            <div style="text-align: center;">
-                <a href="https://www.flickr.com/photos/185928919@N08/albums/72157712210256673" target="_blank" class="gallery-link">
+
+            <div class="features-duo-grid">
+                <div class="feature-card fade-element">
+                    <h3 data-key="interior_title">🛋️ Interior & Amenities</h3>
+                    <ul>
+                        <li><strong data-key="interior_1_title">Accommodation:</strong> <span data-key="interior_1_text">2 luxurious cabins for absolute relaxation.</span></li>
+                        <li><strong data-key="interior_2_title">Bathrooms:</strong> <span data-key="interior_2_text">2 fully equipped bathrooms with modern aesthetics.</span></li>
+                        <li><strong data-key="interior_3_title">Galley:</strong> <span data-key="interior_3_text">Espresso machine & wine fridge.</span></li>
+                        <li><strong data-key="interior_4_title">Climate:</strong> <span data-key="interior_4_text">Full A/C & 13.5kw generator with watermaker (120 L/h).</span></li>
+                    </ul>
+                </div>
+                <div class="feature-card fade-element">
+                    <h3 data-key="exterior_title">🌊 Exterior Spaces</h3>
+                    <ul>
+                        <li><strong data-key="exterior_1_title">Teak Deck:</strong> <span data-key="exterior_1_text">Classic luxury wooden decking.</span></li>
+                        <li><strong data-key="exterior_2_title">BBQ:</strong> <span data-key="exterior_2_text">Built-in grill for gourmet cruising.</span></li>
+                        <li><strong data-key="exterior_3_title">Bow Lounging:</strong> <span data-key="exterior_3_text">Reclining sun loungers with panoramic views.</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="gallery-button-wrapper">
+                <a href="https://www.flickr.com/photos/185928919@N08/albums/72157712210256673" target="_blank" class="banner-gallery-btn">
                     <span>📷</span> <span data-key="gallery_btn">View Photo Gallery</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="banner" id="gallery">
-        <div class="banner-content fade-element">
-            <h2 data-key="banner_title">Unforgettable Moments in the Aegean</h2>
-            <p data-key="banner_subtitle">Explore the most enchanting destinations</p>           
-        </div>
-    </section>
-
-    <section class="features" id="experience" style="background: var(--primary); padding-top: 0;">
-        <div class="section-header fade-element">
-            <h2 class="section-title" data-key="experiences_title">Exclusive Yachting Experiences</h2>
-            <p class="section-subtitle" data-key="experiences_subtitle">Discover the hidden gems of Greece with THEMIS IV.</p>
-        </div>
-        <div class="experience-grid">
-            <div class="exp-card fade-element" style="background-image: linear-gradient(rgba(10,17,40,0.85), rgba(10,17,40,0.85)), url('images/sporades-bg.jpg');">
-                <h3 data-key="exp1_title">Sporades Islands</h3>
-                <p data-key="exp1_desc">A full-day excursion to the Marine Park. Swim in turquoise waters, explore Blue Caves.</p>
-                <ul class="feature-list">
-                    <li data-key="exp1_list1">Departure from Skiathos or Volos</li>
-                    <li data-key="exp1_list2">Visit Tsougria & Lalaria beach</li>
-                    <li data-key="exp1_list3">Snorkeling in secluded bays</li>
-                </ul>
+    <!-- EXPERIENCES SECTION WITH slideshow1.jpg BACKGROUND -->
+    <section class="experiences-section" id="experience">
+        <div class="experiences-overlay"></div>
+        <div class="container">
+            <div class="section-header fade-element">
+                <h2 class="section-title" data-key="experiences_title">Exclusive Yachting Experiences</h2>
+                <p class="section-subtitle" data-key="experiences_subtitle">Discover the hidden gems of Greece with THEMIS IV.</p>
             </div>
-            <div class="exp-card fade-element" style="background-image: linear-gradient(rgba(10,17,40,0.85), rgba(10,17,40,0.85)), url('images/trikeri-bg.jpg');">
-                <h3 data-key="exp2_title">Pagasetic Gulf - Trikeri</h3>
-                <p data-key="exp2_desc">Experience absolute serenity. A journey to the car-free island of Trikeri.</p>
-                <ul class="feature-list">
-                    <li data-key="exp2_list1">Views of South Pelion</li>
-                    <li data-key="exp2_list2">Seafood lunch at Trikeri Island</li>
-                    <li data-key="exp2_list3">Hidden beaches only accessible by boat</li>
-                </ul>
-            </div>
-            <div class="exp-card fade-element" style="background-image: linear-gradient(rgba(10,17,40,0.85), rgba(10,17,40,0.85)), url('images/alonissos-bg.jpg');">
-                <h3 data-key="exp3_title">Boutique Cruises - Alonissos</h3>
-                <p data-key="exp3_desc">Tailor-made multi-day cruises offering absolute privacy.</p>
-                <ul class="feature-list">
-                    <li data-key="exp3_list1">Customized daily itinerary</li>
-                    <li data-key="exp3_list2">Professional Crew & Captain</li>
-                    <li data-key="exp3_list3">Premium catering on board</li>
-                </ul>
+            <div class="experience-grid">
+                <div class="exp-card fade-element">
+                    <h3 data-key="exp1_title">Sporades Islands</h3>
+                    <p data-key="exp1_desc">A full-day excursion to the Marine Park. Swim in turquoise waters, explore Blue Caves.</p>
+                    <ul class="feature-list">
+                        <li data-key="exp1_list1">Departure from Skiathos or Volos</li>
+                        <li data-key="exp1_list2">Visit Tsougria & Lalaria beach</li>
+                        <li data-key="exp1_list3">Snorkeling in secluded bays</li>
+                    </ul>
+                </div>
+                <div class="exp-card fade-element">
+                    <h3 data-key="exp2_title">Pagasetic Gulf - Trikeri</h3>
+                    <p data-key="exp2_desc">Experience absolute serenity. A journey to the car-free island of Trikeri.</p>
+                    <ul class="feature-list">
+                        <li data-key="exp2_list1">Views of South Pelion</li>
+                        <li data-key="exp2_list2">Seafood lunch at Trikeri Island</li>
+                        <li data-key="exp2_list3">Hidden beaches only accessible by boat</li>
+                    </ul>
+                </div>
+                <div class="exp-card fade-element">
+                    <h3 data-key="exp3_title">Boutique Cruises - Alonissos</h3>
+                    <p data-key="exp3_desc">Tailor-made multi-day cruises offering absolute privacy.</p>
+                    <ul class="feature-list">
+                        <li data-key="exp3_list1">Customized daily itinerary</li>
+                        <li data-key="exp3_list2">Professional Crew & Captain</li>
+                        <li data-key="exp3_list3">Premium catering on board</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -502,7 +844,6 @@
                     </select>
                 </div>
                 
-                <!-- CRUISE TYPE - Fixed to show both options clearly -->
                 <div class="form-group">
                     <label data-key="form_cruise_type">Cruise Type</label>
                     <select name="cruise_type" id="cruise_type" style="min-height: 45px;">
@@ -516,7 +857,6 @@
                     <input type="date" name="date" id="preferred_date" required>
                 </div>
                 
-                <!-- NUMBER OF GUESTS - Fixed to show all options -->
                 <div class="form-group">
                     <label data-key="form_guests">Number of Guests</label>
                     <select name="guests" id="guests_count" required style="min-height: 45px;"></select>
@@ -541,8 +881,8 @@
     <footer>
         <div class="footer-logo">THEMIS IV</div>
         <div class="contact-info">
-            <div class="contact-item"><span data-key="footer_email">E-Mail</span><span>tsopy@otenet.gr</span></div>
-            <div class="contact-item"><span data-key="footer_whatsapp">Secure Line</span><span>+30 6976292001</span></div>
+            <div class="contact-item"><span data-key="footer_email">Email</span><span>tsopy@otenet.gr</span></div>
+            <div class="contact-item"><span class="whatsapp-label" data-key="footer_whatsapp">💬 WhatsApp</span><span>+30 6976292001</span></div>
             <div class="contact-item"><span data-key="footer_location">Base</span><span data-key="footer_location_text">Volos & Skiathos, Greece</span></div>
         </div>
         <div class="copyright" data-key="copyright">&copy; 2026 THEMIS IV Yachting. All Rights Reserved.</div>
@@ -551,12 +891,21 @@
     <script>
         const translations = {
             en: {
-                nav_home: "Home", nav_yacht: "The Yacht", nav_experience: "Experience", nav_contact: "Contact", nav_book: "Book Now",
+                nav_home: "Home", nav_yacht: "The Yacht", nav_specs: "Specifications", nav_experience: "Experience", nav_contact: "Contact", nav_book: "Book Now",
                 hero_subtitle: "CRUISER YACHTS 450C SPORT COUPE", hero_btn: "Discover Executive Luxury",
                 about_title: "Absolute Comfort & C-Suite Style", about_subtitle: "Designed for the global elite. A private sanctuary on the Aegean.",
                 feature1_title: "Elegance Meets<br>Performance", feature1_text1: "THEMIS IV is a stunning Cruiser Yachts 450C Sport Coupe, engineered for the CEO who demands perfection.", feature1_text2: "Every detail is curated: premium leather, carbon accents, and panoramic views.",
                 feature1_list1: "Spacious salon with 360° panoramic views", feature1_list2: "Fully equipped high-end galley", feature1_list3: "Premium leather upholstery and authentic wood finishes", feature1_list4: "State-of-the-art sound system & home cinema",
-                banner_title: "Unforgettable Moments in the Aegean", banner_subtitle: "Explore the most enchanting destinations",
+                specs_title: "Engineering Excellence", specs_subtitle: "Precision, Power & Performance",
+                spec_length: "Length Overall", spec_beam: "Beam", spec_engines: "Engines", spec_speed: "Max Speed", spec_consumption: "Fuel Consumption",
+                interior_title: "🛋️ Interior & Amenities", interior_1_title: "Accommodation:", interior_1_text: "2 luxurious cabins for absolute relaxation.",
+                interior_2_title: "Bathrooms:", interior_2_text: "2 fully equipped bathrooms with modern aesthetics.",
+                interior_3_title: "Galley:", interior_3_text: "Espresso machine & wine fridge.",
+                interior_4_title: "Climate:", interior_4_text: "Full A/C & 13.5kw generator with watermaker (120 L/h).",
+                exterior_title: "🌊 Exterior Spaces", exterior_1_title: "Teak Deck:", exterior_1_text: "Classic luxury wooden decking.",
+                exterior_2_title: "BBQ:", exterior_2_text: "Built-in grill for gourmet cruising.",
+                exterior_3_title: "Bow Lounging:", exterior_3_text: "Reclining sun loungers with panoramic views.",
+                gallery_btn: "View Photo Gallery",
                 experiences_title: "Exclusive Yachting Experiences", experiences_subtitle: "Discover the hidden gems of Greece with THEMIS IV.",
                 exp1_title: "Sporades Islands", exp1_desc: "A full-day excursion to the Marine Park. Swim in turquoise waters, explore Blue Caves.",
                 exp1_list1: "Departure from Skiathos or Volos", exp1_list2: "Visit Tsougria & Lalaria beach", exp1_list3: "Snorkeling in secluded bays",
@@ -564,19 +913,27 @@
                 exp2_list1: "Views of South Pelion", exp2_list2: "Seafood lunch at Trikeri Island", exp2_list3: "Hidden beaches only accessible by boat",
                 exp3_title: "Boutique Cruises - Alonissos", exp3_desc: "Tailor-made multi-day cruises offering absolute privacy.",
                 exp3_list1: "Customized daily itinerary", exp3_list2: "Professional Crew & Captain", exp3_list3: "Premium catering on board",
-                gallery_btn: "View Photo Gallery",
                 form_title: "Private Charter Inquiry", form_subtitle: "For VIPs and C-Level Executives Only", form_name: "Full Name *", form_email: "Corporate Email *", form_income: "Annual Income (USD) *", income_select: "Select",
                 opt_day: "Day-Trip Executive Cruise (1-8 guests)", opt_multi: "Multi-day CEO Retreat (1-2 guests)", form_date: "Preferred Date *", form_guests: "Number of Guests", form_message: "Private Requests / Security Notes *", form_submit: "Submit Confidential Inquiry",
                 ai_title: "EXECUTIVE CONCIERGE", ai_welcome: "Welcome to <b>THEMIS IV</b>.", ai_text: "Your dedicated AI assistant for ultra-luxury experiences.",
-                footer_email: "E-Mail", footer_whatsapp: "Mobile Phone", footer_location: "Base", footer_location_text: "Volos & Skiathos, Greece", copyright: "&copy; 2026 THEMIS IV Yachting. All Rights Reserved."
+                footer_email: "Email", footer_whatsapp: "💬 WhatsApp", footer_location: "Base", footer_location_text: "Volos & Skiathos, Greece", copyright: "&copy; 2026 THEMIS IV Yachting. All Rights Reserved."
             },
             el: {
-                nav_home: "Αρχική", nav_yacht: "Το Σκάφος", nav_experience: "Εμπειρίες", nav_contact: "Επικοινωνία", nav_book: "Κράτηση",
+                nav_home: "Αρχική", nav_yacht: "Το Σκάφος", nav_specs: "Τεχνικά", nav_experience: "Εμπειρίες", nav_contact: "Επικοινωνία", nav_book: "Κράτηση",
                 hero_subtitle: "CRUISER YACHTS 450C SPORT COUPE", hero_btn: "Ανακαλύψτε την Executive Πολυτέλεια",
                 about_title: "Απόλυτη Άνεση & C-Suite Στυλ", about_subtitle: "Σχεδιασμένο για την παγκόσμια ελίτ. Ένα ιδιωτικό καταφύγιο στο Αιγαίο.",
                 feature1_title: "Η Κομψότητα Συναντά<br>τις Επιδόσεις", feature1_text1: "Το THEMIS IV είναι ένα εντυπωσιακό Cruiser Yachts 450C Sport Coupe, σχεδιασμένο για τον CEO που απαιτεί την τελειότητα.", feature1_text2: "Κάθε λεπτομέρεια είναι επιμελημένη: premium δέρμα, ανθρακονήματα και πανοραμική θέα.",
                 feature1_list1: "Ευρύχωρο σαλόνι με πανοραμική θέα 360°", feature1_list2: "Πλήρως εξοπλισμένη κουζίνα υψηλών προδιαγραφών", feature1_list3: "Επενδύσεις από premium δέρμα και αυθεντικό ξύλο", feature1_list4: "Hi-Fi ηχοσύστημα & home cinema",
-                banner_title: "Αξέχαστες Στιγμές στο Αιγαίο", banner_subtitle: "Εξερευνήστε τους πιο μαγευτικούς προορισμούς",
+                specs_title: "Μηχανική Αριστεία", specs_subtitle: "Ακρίβεια, Ισχύς & Απόδοση",
+                spec_length: "Ολικό Μήκος", spec_beam: "Πλάτος", spec_engines: "Κινητήρες", spec_speed: "Μέγιστη Ταχύτητα", spec_consumption: "Κατανάλωση",
+                interior_title: "🛋️ Εσωτερικοί Χώροι & Παροχές", interior_1_title: "Διαμονή:", interior_1_text: "2 πολυτελείς καμπίνες για απόλυτη χαλάρωση.",
+                interior_2_title: "Μπάνια:", interior_2_text: "2 πλήρως εξοπλισμένα μπάνια με μοντέρνα αισθητική.",
+                interior_3_title: "Κουζίνα:", interior_3_text: "Μηχανή Espresso & ψυγείο κρασιών.",
+                interior_4_title: "Κλιματισμός:", interior_4_text: "Πλήρης κλιματισμός & γεννήτρια 13.5kw με αφαλάτωση (120 L/h).",
+                exterior_title: "🌊 Εξωτερικοί Χώροι", exterior_1_title: "Teak Deck:", exterior_1_text: "Κλασική πολυτελής ξύλινη επένδυση.",
+                exterior_2_title: "BBQ:", exterior_2_text: "Ενσωματωμένη ψησταριά για γαστρονομικές εμπειρίες.",
+                exterior_3_title: "Πλώρη:", exterior_3_text: "Ανακλινόμενες ξαπλώστρες με πανοραμική θέα.",
+                gallery_btn: "Δείτε τη Γκαλερί Φωτογραφιών",
                 experiences_title: "Αποκλειστικές Yachting Εμπειρίες", experiences_subtitle: "Ανακαλύψτε τα κρυμμένα πετράδια της Ελλάδας με το THEMIS IV.",
                 exp1_title: "Σποράδες", exp1_desc: "Μονοήμερη εκδρομή στο Θαλάσσιο Πάρκο. Κολυμπήστε σε τιρκουάζ νερά, εξερευνήστε τις Μπλε Σπηλιές.",
                 exp1_list1: "Αναχώρηση από Σκιάθο ή Βόλο", exp1_list2: "Επίσκεψη σε Τσουγκριά & Λαλάρια", exp1_list3: "Snorkeling σε απομονωμένους όρμους",
@@ -584,19 +941,27 @@
                 exp2_list1: "Θέα στο Νότιο Πήλιο", exp2_list2: "Γεύμα με θαλασσινά στο Τρίκερι", exp2_list3: "Κρυφές παραλίες προσβάσιμες μόνο με σκάφος",
                 exp3_title: "Boutique Cruises - Αλόννησος", exp3_desc: "Κατά παραγγελία πολυήμερες κρουαζιέρες με απόλυτη ιδιωτικότητα.",
                 exp3_list1: "Εξατομικευμένο καθημερινό πρόγραμμα", exp3_list2: "Επαγγελματικό πλήρωμα & καπετάνιος", exp3_list3: "Πολυτελής εστίαση επί πλοίου",
-                gallery_btn: "Δείτε τη Γκαλερί Φωτογραφιών",
                 form_title: "Ιδιωτικό Αίτημα Ναύλωσης", form_subtitle: "Μόνο για VIP και C-Level Στελέχη", form_name: "Ονοματεπώνυμο *", form_email: "Εταιρικό Email *", form_income: "Ετήσιο Εισόδημα (USD) *", income_select: "Επιλέξτε",
                 opt_day: "Ημερήσια Executive Κρουαζιέρα (1-8 άτομα)", opt_multi: "Πολυήμερη CEO Απόδραση (1-2 άτομα)", form_date: "Προτιμώμενη Ημερομηνία *", form_guests: "Αριθμός Επισκεπτών", form_message: "Ιδιωτικά αιτήματα / Σημειώσεις Ασφαλείας *", form_submit: "Υποβολή Εμπιστευτικού Αιτήματος",
                 ai_title: "EXECUTIVE CONCIERGE", ai_welcome: "Καλώς ήρθατε στο <b>THEMIS IV</b>.", ai_text: "Ο αποκλειστικός AI βοηθός σας για εμπειρίες ultra-luxury.",
-                footer_email: "E-Mail", footer_whatsapp: "Κινητό Τηλέφωνο", footer_location: "Βάση", footer_location_text: "Βόλος & Σκιάθος, Ελλάδα", copyright: "&copy; 2026 THEMIS IV Yachting. Με την επιφύλαξη παντός δικαιώματος."
+                footer_email: "Email", footer_whatsapp: "💬 WhatsApp", footer_location: "Βάση", footer_location_text: "Βόλος & Σκιάθος, Ελλάδα", copyright: "&copy; 2026 THEMIS IV Yachting. Με την επιφύλαξη παντός δικαιώματος."
             },
             de: {
-                nav_home: "Startseite", nav_yacht: "Die Yacht", nav_experience: "Erlebnisse", nav_contact: "Kontakt", nav_book: "Buchen",
+                nav_home: "Startseite", nav_yacht: "Die Yacht", nav_specs: "Technische Daten", nav_experience: "Erlebnisse", nav_contact: "Kontakt", nav_book: "Buchen",
                 hero_subtitle: "CRUISER YACHTS 450C SPORT COUPE", hero_btn: "Luxus Entdecken",
                 about_title: "Absoluter Komfort & C-Suite Stil", about_subtitle: "Entworfen für die globale Elite. Ein privates Refugium in der Ägäis.",
                 feature1_title: "Eleganz trifft<br>Leistung", feature1_text1: "THEMIS IV ist eine beeindruckende Cruiser Yachts 450C Sport Coupe, entwickelt für den CEO, der Perfektion verlangt.", feature1_text2: "Jedes Detail ist kuratiert: Premium-Leder, Carbon-Akzente und Panoramablick.",
                 feature1_list1: "Geräumiger Salon mit 360°-Rundumblick", feature1_list2: "Voll ausgestattete High-End-Küche", feature1_list3: "Premium-Lederpolsterung und authentische Holzverkleidung", feature1_list4: "Modernstes Soundsystem & Heimkino",
-                banner_title: "Unvergessliche Momente in der Ägäis", banner_subtitle: "Entdecken Sie die bezauberndsten Reiseziele",
+                specs_title: "Technische Exzellenz", specs_subtitle: "Präzision, Kraft & Leistung",
+                spec_length: "Gesamtlänge", spec_beam: "Breite", spec_engines: "Motoren", spec_speed: "Höchstgeschwindigkeit", spec_consumption: "Kraftstoffverbrauch",
+                interior_title: "🛋️ Innenräume & Annehmlichkeiten", interior_1_title: "Unterkunft:", interior_1_text: "2 luxuriöse Kabinen für absolute Entspannung.",
+                interior_2_title: "Badezimmer:", interior_2_text: "2 voll ausgestattete Badezimmer mit moderner Ästhetik.",
+                interior_3_title: "Küche:", interior_3_text: "Espressomaschine & Weinkühlschrank.",
+                interior_4_title: "Klima:", interior_4_text: "Volle Klimaanlage & 13.5kw Generator mit Wasserbereiter (120 L/h).",
+                exterior_title: "🌊 Außenbereiche", exterior_1_title: "Teakdeck:", exterior_1_text: "Klassische luxuriöse Holzdeckung.",
+                exterior_2_title: "BBQ:", exterior_2_text: "Eingebauter Grill für kulinarische Erlebnisse.",
+                exterior_3_title: "Bug:", exterior_3_text: "Verstellbare Sonnenliegen mit Panoramablick.",
+                gallery_btn: "Fotogalerie ansehen",
                 experiences_title: "Exklusive Yachting-Erlebnisse", experiences_subtitle: "Entdecken Sie die verborgenen Schätze Griechenlands mit THEMIS IV.",
                 exp1_title: "Sporaden-Inseln", exp1_desc: "Ein Tagesausflug zum Meeresschutzpark. Schwimmen Sie in türkisfarbenem Wasser, erkunden Sie die Blauen Grotten.",
                 exp1_list1: "Abfahrt von Skiathos oder Volos", exp1_list2: "Besuch von Tsougria und Lalaria Strand", exp1_list3: "Schnorcheln in abgelegenen Buchten",
@@ -604,19 +969,27 @@
                 exp2_list1: "Blick auf Süd-Pelion", exp2_list2: "Mittagessen mit Meeresfrüchten auf der Insel Trikeri", exp2_list3: "Versteckte Strände, die nur mit dem Boot erreichbar sind",
                 exp3_title: "Boutique-Kreuzfahrten - Alonissos", exp3_desc: "Maßgeschneiderte mehrtägige Kreuzfahrten mit absoluter Privatsphäre.",
                 exp3_list1: "Individueller Tagesablauf", exp3_list2: "Professionelle Crew & Kapitän", exp3_list3: "Premium-Catering an Bord",
-                gallery_btn: "Fotogalerie ansehen",
                 form_title: "Private Charter Anfrage", form_subtitle: "Nur für VIPs und C-Level Führungskräfte", form_name: "Vollständiger Name *", form_email: "Geschäfts-E-Mail *", form_income: "Jahreseinkommen (USD) *", income_select: "Auswählen",
                 opt_day: "Tägliche Executive Kreuzfahrt (1-8 Gäste)", opt_multi: "Mehrtägiger CEO Rückzugsort (1-2 Gäste)", form_date: "Wunschdatum *", form_guests: "Anzahl der Gäste", form_message: "Private Anfragen / Sicherheitshinweise *", form_submit: "Vertrauliche Anfrage senden",
                 ai_title: "EXECUTIVE CONCIERGE", ai_welcome: "Willkommen an Bord der <b>THEMIS IV</b>.", ai_text: "Ihr engagierter KI-Assistent für Ultra-Luxus-Erlebnisse.",
-                footer_email: "E-Mail", footer_whatsapp: "Mobiltelefon", footer_location: "Basis", footer_location_text: "Volos & Skiathos, Griechenland", copyright: "&copy; 2026 THEMIS IV Yachting. Alle Rechte vorbehalten."
+                footer_email: "Email", footer_whatsapp: "💬 WhatsApp", footer_location: "Basis", footer_location_text: "Volos & Skiathos, Griechenland", copyright: "&copy; 2026 THEMIS IV Yachting. Alle Rechte vorbehalten."
             },
             fr: {
-                nav_home: "Accueil", nav_yacht: "Le Yacht", nav_experience: "Expériences", nav_contact: "Contact", nav_book: "Réserver",
+                nav_home: "Accueil", nav_yacht: "Le Yacht", nav_specs: "Spécifications", nav_experience: "Expériences", nav_contact: "Contact", nav_book: "Réserver",
                 hero_subtitle: "CRUISER YACHTS 450C SPORT COUPE", hero_btn: "Découvrez le Luxe",
                 about_title: "Confort Absolu & Style C-Suite", about_subtitle: "Conçu pour l'élite mondiale. Un sanctuaire privé dans la mer Égée.",
                 feature1_title: "L'Élégance Rencontre<br>la Performance", feature1_text1: "THEMIS IV est un magnifique Cruiser Yachts 450C Sport Coupe, conçu pour le PDG qui exige la perfection.", feature1_text2: "Chaque détail est curaté: cuir premium, accents en carbone et vues panoramiques.",
                 feature1_list1: "Salon spacieux avec vue panoramique à 360°", feature1_list2: "Cuisine haut de gamme entièrement équipée", feature1_list3: "Sellerie en cuir premium et finitions en bois authentique", feature1_list4: "Système audio haut de gamme et home cinéma",
-                banner_title: "Moments Inoubliables dans la Mer Égée", banner_subtitle: "Explorez les destinations les plus enchantées",
+                specs_title: "Excellence Technique", specs_subtitle: "Précision, Puissance & Performance",
+                spec_length: "Longueur Hors Tout", spec_beam: "Largeur", spec_engines: "Moteurs", spec_speed: "Vitesse Maximale", spec_consumption: "Consommation",
+                interior_title: "🛋️ Intérieurs & Équipements", interior_1_title: "Hébergement:", interior_1_text: "2 cabines luxueuses pour une relaxation absolue.",
+                interior_2_title: "Salles de bain:", interior_2_text: "2 salles de bain entièrement équipées avec une esthétique moderne.",
+                interior_3_title: "Cuisine:", interior_3_text: "Machine à espresso & cave à vin.",
+                interior_4_title: "Climatisation:", interior_4_text: "Climatisation complète & générateur 13.5kw avec dessalinisateur (120 L/h).",
+                exterior_title: "🌊 Espaces Extérieurs", exterior_1_title: "Pont en Teck:", exterior_1_text: "Pont en bois de teck d'un luxe classique.",
+                exterior_2_title: "BBQ:", exterior_2_text: "Grille intégrée pour des expériences gastronomiques.",
+                exterior_3_title: "Proue:", exterior_3_text: "Transats inclinables avec vue panoramique.",
+                gallery_btn: "Voir la Galerie Photos",
                 experiences_title: "Expériences Yachting Exclusives", experiences_subtitle: "Découvrez les trésors cachés de la Grèce avec THEMIS IV.",
                 exp1_title: "Îles Sporades", exp1_desc: "Une excursion d'une journée dans le Parc Marin. Nagez dans des eaux turquoises, explorez les Grottes Bleues.",
                 exp1_list1: "Départ de Skiathos ou Volos", exp1_list2: "Visite de Tsougria et de la plage de Lalaria", exp1_list3: "Snorkeling dans des criques isolées",
@@ -624,11 +997,10 @@
                 exp2_list1: "Vues sur le sud du Pélion", exp2_list2: "Déjeuner de fruits de mer sur l'île de Trikeri", exp2_list3: "Plages cachées accessibles uniquement en bateau",
                 exp3_title: "Croisières Boutique - Alonissos", exp3_desc: "Croisières sur mesure de plusieurs jours offrant une intimité absolue.",
                 exp3_list1: "Itinéraire quotidien personnalisé", exp3_list2: "Équipage professionnel & Capitaine", exp3_list3: "Restauration premium à bord",
-                gallery_btn: "Voir la Galerie Photos",
                 form_title: "Demande de Charter Privé", form_subtitle: "Réservé aux VIP et Cadres C-Level", form_name: "Nom Complet *", form_email: "Email Professionnel *", form_income: "Revenu Annuel (USD) *", income_select: "Sélectionner",
                 opt_day: "Croisière Exécutive à la journée (1-8 invités)", opt_multi: "Retraite PDG de plusieurs jours (1-2 invités)", form_date: "Date Préférée *", form_guests: "Nombre d'Invités", form_message: "Demandes Privées / Notes de Sécurité *", form_submit: "Soumettre la Demande Confidentielle",
                 ai_title: "CONCIERGE EXÉCUTIF", ai_welcome: "Bienvenue à bord du <b>THEMIS IV</b>.", ai_text: "Votre assistant IA dédié aux expériences ultra-luxueuses.",
-                footer_email: "E-Mail", footer_whatsapp: "Téléphone Mobile", footer_location: "Base", footer_location_text: "Volos & Skiathos, Grèce", copyright: "&copy; 2026 THEMIS IV Yachting. Tous droits réservés."
+                footer_email: "Email", footer_whatsapp: "💬 WhatsApp", footer_location: "Base", footer_location_text: "Volos & Skiathos, Grèce", copyright: "&copy; 2026 THEMIS IV Yachting. Tous droits réservés."
             }
         };
 
