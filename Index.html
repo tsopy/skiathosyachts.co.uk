@@ -68,14 +68,14 @@
         
         .nav-links { 
             display: flex; 
-            gap: 1rem; 
+            gap: 1.5rem; 
             list-style: none;
-            margin: 0.5rem 0;
+            margin: 0;
         }
         .nav-links li a { 
             font-weight: 600; 
             text-transform: uppercase; 
-            font-size: 0.7rem; 
+            font-size: 0.75rem; 
             letter-spacing: 1px; 
             transition: color 0.3s;
             padding: 0.4rem 0;
@@ -85,11 +85,8 @@
         
         .nav-right {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-            width: 100%;
-            margin-top: 0.3rem;
+            gap: 1rem;
         }
         
         .cta-btn { 
@@ -125,7 +122,7 @@
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             transition: all 0.3s ease;
             font-family: 'Montserrat', sans-serif;
         }
@@ -586,8 +583,26 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-12px) translateX(-50%); } 60% { transform: translateY(-5px) translateX(-50%); } }
 
-        /* Mobile optimization for video */
+        /* ========== DESKTOP (default) ========== */
+        @media (min-width: 769px) {
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .feature-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .booking-form { grid-template-columns: 1fr 1fr; }
+            .full-width { grid-column: span 2; }
+            .experience-grid { grid-template-columns: repeat(3, 1fr); }
+            .ai-chat-window { left: auto; right: 20px; width: 300px; }
+            .features-duo-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-title { font-size: 4.5rem; }
+            .section-title { font-size: 2.5rem; }
+        }
+
+        /* ========== MOBILE (max-width: 768px) ========== */
         @media (max-width: 768px) {
+            /* Γενικές ρυθμίσεις */
             .hero-title { font-size: 2rem; letter-spacing: 3px; }
             .hero-subtitle { font-size: 0.7rem; letter-spacing: 2px; }
             .hero-btn { padding: 0.6rem 1.5rem; font-size: 0.8rem; }
@@ -595,9 +610,6 @@
             .booking-form { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
             .experience-grid { grid-template-columns: 1fr; }
-            .nav-right { flex-direction: row; width: auto; justify-content: flex-end; margin-top: 0; }
-            .nav-links { margin: 0; }
-            nav { flex-wrap: nowrap; }
             .ai-chat-window { left: auto; right: 20px; width: 300px; }
             .features-duo-grid { grid-template-columns: 1fr; }
             .specs-grid { gap: 1rem; }
@@ -609,7 +621,7 @@
             .banner-gallery-btn { padding: 0.6rem 1.2rem; font-size: 0.7rem; }
             .feature-text { padding: 1rem; }
             
-            /* Σε κινητά, το video αντικαθίσταται με εικόνα για ταχύτητα */
+            /* Video σε κινητά - αντικατάσταση με εικόνα */
             #heroVideo {
                 display: none;
             }
@@ -619,25 +631,76 @@
             .video-overlay {
                 background: rgba(10, 17, 40, 0.7);
             }
+            
+            /* ========== NAVIGATION - ΣΥΜΠΑΓΕΣ MOBILE MENU ========== */
+            nav {
+                flex-direction: column;
+                padding: 0.5rem 4%;
+            }
+            .logo {
+                margin-bottom: 0.3rem;
+            }
+            .logo img {
+                height: 32px;
+            }
+            .nav-links {
+                display: flex;
+                gap: 0.6rem;
+                margin: 0.3rem 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links li a {
+                font-size: 0.55rem;
+                padding: 0.3rem 0;
+                letter-spacing: 0.5px;
+            }
+            
+            /* BOOK NOW πρώτο, γλώσσες από κάτω */
+            .nav-right {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.3rem;
+                width: 100%;
+                margin-top: 0.3rem;
+            }
+            .cta-btn {
+                padding: 0.35rem 0.9rem;
+                font-size: 0.65rem;
+                width: auto;
+                display: inline-block;
+            }
+            .lang-switcher {
+                justify-content: center;
+                padding: 3px 6px;
+            }
+            .lang-btn {
+                padding: 2px 7px;
+                font-size: 0.55rem;
+            }
         }
 
-        @media (min-width: 768px) {
-            .hero-title { font-size: 3.5rem; }
-            .hero-subtitle { font-size: 1.1rem; }
-            .feature-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-            .booking-form { grid-template-columns: 1fr 1fr; }
-            .full-width { grid-column: span 2; }
-            .experience-grid { grid-template-columns: repeat(3, 1fr); }
-            .nav-right { flex-direction: row; width: auto; justify-content: flex-end; margin-top: 0; }
-            .nav-links { margin: 0; }
-            nav { flex-wrap: nowrap; }
-            .ai-chat-window { left: auto; right: 20px; width: 300px; }
-            .features-duo-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (min-width: 1024px) {
-            .hero-title { font-size: 4.5rem; }
-            .section-title { font-size: 2.5rem; }
+        /* ========== ΠΟΛΥ ΜΙΚΡΕΣ ΟΘΟΝΕΣ (max-width: 480px) ========== */
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 0.4rem;
+            }
+            .nav-links li a {
+                font-size: 0.5rem;
+            }
+            .cta-btn {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.6rem;
+            }
+            .lang-btn {
+                padding: 2px 5px;
+                font-size: 0.5rem;
+            }
+            .hero-title {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
         }
     </style>
 </head>
